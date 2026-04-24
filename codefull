@@ -1,0 +1,52 @@
+task_open=[]
+print('say what you want to do:  ')
+print("1- add tasks")
+print("2-remove tasks")
+print("3-update tasks")
+print("4-view tasks")
+print('5-Exit')
+while True:
+    try:
+        action=(int(input('Input your choice: ')))
+        if action==1:
+            task_open.append(input('Enter a task:'))
+            print('Task added successfully')
+            continue
+        elif action==2:
+            if not task_open:
+                print("No tasks available")
+                continue
+            else:
+                for indice, item in enumerate(task_open):
+                    print(f'{indice}-{item}')
+
+                index_remove=(int(input('input indice remove: ')))
+                
+                if 0 <= index_remove<len(task_open):
+                
+                    task_open.pop(index_remove)
+                    print("Task removed successfully")
+        elif action==3:
+            if not task_open:
+                print('No tasks available')
+            else:
+                for indice, item in enumerate(task_open):
+                    print(f'{indice}- {item}')
+                
+                index_update=int(input('input index to update: '))
+                
+                task_open[index_update]=input('Read update task: ')
+                print('task updated')  
+        elif action==4:
+            if not task_open:
+                print('No tasks available')
+                continue
+            else:
+                for indice, item in enumerate(task_open):
+                    print(f'{indice}-{item}')
+        elif action==5:
+            print("Good bye")
+            break
+
+    except ValueError:
+        print('invalid input')
